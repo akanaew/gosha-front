@@ -1,13 +1,63 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "first_col second_col" "first_col three_col";
+    height: 100vh;
+}
+
+.page__col:nth-child(1) {
+    grid-area: first_col;
+    background-color: purple;
+    max-width: 50vw;
+}
+
+.page__col:nth-child(2) {
+    grid-area: second_col;
+    background-color: green;
+    max-width: 50vw;
+}
+
+.page__col:nth-child(3) {
+    grid-area: three_col;
+    background-color: deepskyblue;
+    max-width: 50vw;
+}
+
+.page__col:nth-child(1) .slick-slide div {
+    height: 100vh;
+}
+
+.page__col:nth-child(2) .slick-slide div {
+    height: 50vh;
+}
+
+.page__col:nth-child(3) .slick-slide div {
+    height: 50vh;
+}
+
+.slick-slide img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.slick-slide video {
+    height: 100%;
+    object-fit: cover;
+}
+
+.Play {
+    position: absolute;
+    height: 320px;
+    width: 320px;
+    left: calc(50vw - 160px);
+    top: calc(50vh - 160px);
+    background: green;
+    color: #fff;
+    font-size: 24px;
 }
