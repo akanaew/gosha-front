@@ -47,8 +47,8 @@ const App = () => {
         arrows: false,
         swipe: false
     };
-
-    useEffect(() => {
+    
+    const request = () => {
         fetch('http://localhost:5000/carousel?index=1')
             .then(res => res.json())
             .then(res => setFirstCarousel(res));
@@ -60,10 +60,17 @@ const App = () => {
             .then(res => {
                 setTreeCarousel(res);
             });
+    }
+    
+    useEffect(() => {
+        request()
     }, []);
 
     const afterChangeHandler = (currentSlide) => {
         console.log('afterChangeHandler', currentSlide);
+        if (threeCarousel.lenght === currentSlide) {
+            request();
+        }
         videosRef[currentSlide].current.play().then(e => console.log(e)).catch(e => console.log('Error:' ,e))
         setCurrentVideo(currentSlide)
         videosRef[currentSlide].current.muted = false;
